@@ -1,14 +1,16 @@
-import { Body, Controller, Post, UnauthorizedException } from "@nestjs/common";
+import { Body, Controller, Post, Req, UnauthorizedException, UseGuards } from "@nestjs/common";
 import { AuthService } from "./auth.service";
 import { RegisterDto } from "./dto/register.dto";
 import { LoginDto } from "./dto/login.dto";
+import { JwtAuthGuard } from "./guards/jwt-auth.guard";
+import { GetUserId } from "./decorators/get-user.decorator";
 
 
 @Controller('auth')
 export class AuthController {
-    constructor (
+    constructor(
         private readonly authService: AuthService
-    ) {}
+    ) { }
 
     @Post('register')
     async register(@Body() dto: RegisterDto) {
@@ -42,6 +44,12 @@ export class AuthController {
         }
     }
 
-    // @Post('logOut')
-    // async logOut()
+    @UseGuards(JwtAuthGuard)
+    @Post('logout')
+    async logOut(@GetUserId() userId: number) {
+
+        await this.authService.logOut(userId);
+
+        return { message: 'با موفقیت خارج شدید' };
+    }
 }
