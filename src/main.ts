@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { TransformResponseInterceptor } from './common/interceptors/transform-response.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -12,7 +13,7 @@ async function bootstrap() {
 
   //set global API perfix
   app.setGlobalPrefix('api/v1')
-
+  
   // For DTO
   app.useGlobalPipes(new ValidationPipe({
   whitelist: true, 
@@ -20,12 +21,17 @@ async function bootstrap() {
   transform: true, 
   }));
 
+  //enable response transformation
+  app.useGlobalInterceptors(new TransformResponseInterceptor)
+
   //Add Swagger
+
   //manager swagger
   const managerConfig = new DocumentBuilder()
     .setTitle('Hr API - manager routes')
     .setDescription('this route panel for manager')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
   
   const managerDocument = SwaggerModule.createDocument(app, managerConfig, {
@@ -48,6 +54,7 @@ async function bootstrap() {
     .setTitle('Hr API - employee routes')
     .setDescription('this route panel for employee')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
   
   const employeeDocument = SwaggerModule.createDocument(app, employeeConfig, {

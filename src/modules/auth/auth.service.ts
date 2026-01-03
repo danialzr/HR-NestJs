@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException, UnauthorizedException } from "@nestjs/common";
+import { BadRequestException, Injectable, NotFoundException, UnauthorizedException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { User } from "./entities/user.entity";
 import { IsNull, Repository } from "typeorm";
@@ -26,6 +26,9 @@ export class AuthService {
 
     async register(payload: RegisterDto): Promise<User> {
         const { mobile, password, role = Role.EMPLOYEE } = payload;
+        
+        const alreadyExistMobile = await this.findUserByMobile(mobile);
+        if (alreadyExistMobile) throw new BadRequestException('mobile num already used') 
         const passwordHashed = await bcrypt.hash(password, 12);
         const user = this.userRepository.create({ mobile, password: passwordHashed, role })
 
@@ -90,10 +93,14 @@ export class AuthService {
 
         const userId = payload.sub;
 
-        const tokens = await this.rtRepository.find({
-            where: { user: { id: userId }, revokedAt: IsNull() },
-            relations: ['user']
-        })
+        const tokens = await this.rtRepository
+            .createQueryBuilder('rt')
+            .leftJoinAndSelect('rt.user', 'user')
+            .where('rt.userId = :userId', { userId })
+            .andWhere('rt.revokedAt IS NULL')
+            .getMany();
+
+        if (!tokens.length) throw new BadRequestException('token not valid')
 
         for (const rt of tokens) {
             const match = await bcrypt.compare(providedRefreshToken, rt.tokenHash)
@@ -146,6 +153,12 @@ export class AuthService {
     async findUserById(userId: number) {
         const user = await this.userRepository.findOne({ where: { id: userId } })
         if (!user) throw new NotFoundException('user not found');
+        return user;
+    }
+
+    async findUserByMobile(mobile: string) {
+        const user = await this.userRepository.findOne({ where: { mobile } })
+        if (!user) return false;
         return user;
     }
 }
