@@ -29,7 +29,7 @@ export class AuthController {
         return {
             accessToken: token.accessToken,
             refreshToken: token.refreshToken,
-
+            role: user.role
         }
     }
 

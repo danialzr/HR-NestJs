@@ -13,6 +13,12 @@ async function bootstrap() {
 
   //set global API perfix
   app.setGlobalPrefix('api/v1')
+
+  // enable cors 
+  app.enableCors({
+    origin: true,
+    credential: true
+  })
   
   // For DTO
   app.useGlobalPipes(new ValidationPipe({
