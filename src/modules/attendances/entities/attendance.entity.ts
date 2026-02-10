@@ -8,7 +8,7 @@ export class Attendance {
     id: number;
 
     //tarikh shamsi
-    @Column({ type: 'text', nullable: false})
+    @Column({ type: 'varchar', length: 10, nullable: false})
     jDate: string;
 
     @Column({ type: 'timestamp', nullable: true})
@@ -17,7 +17,7 @@ export class Attendance {
     @Column({ type: 'timestamp', nullable: true})
     checkOutTime: Date | null;
 
-    @Column({ type: 'text', nullable: true })
+    @Column({ type: 'varchar', length: 250, nullable: true })
     notes: string | null;
 
     @CreateDateColumn()
