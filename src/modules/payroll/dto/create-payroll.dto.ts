@@ -1,5 +1,5 @@
 import { IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString, Matches, Min } from "class-validator";
-import { PayrollStatus } from "src/shared/enums/payroll-status.enum";
+import { PayrollStatus } from "../../../shared/enums/payroll-status.enum";
 
 
 

@@ -1,5 +1,5 @@
-import { User } from "src/modules/auth/entities/user.entity";
-import { PayrollStatus } from "src/shared/enums/payroll-status.enum";
+import { User } from "../../../modules/auth/entities/user.entity";
+import { PayrollStatus } from "../../../shared/enums/payroll-status.enum";
 import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 

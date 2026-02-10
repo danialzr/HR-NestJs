@@ -7,7 +7,7 @@ import { RegisterDto } from "./dto/register.dto";
 import { LoginDto } from "./dto/login.dto";
 import * as bcrypt from 'bcrypt'
 import { JwtService } from "@nestjs/jwt";
-import { Role } from "src/shared/enums/user-role.enum";
+import { Role } from "../../shared/enums/user-role.enum";
 import { ConfigService } from "@nestjs/config";
 
 

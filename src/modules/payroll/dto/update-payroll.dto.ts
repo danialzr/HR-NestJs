@@ -1,5 +1,5 @@
 import { IsEnum, IsNumber, IsOptional, IsString, Matches, Min } from "class-validator";
-import { PayrollStatus } from "src/shared/enums/payroll-status.enum";
+import { PayrollStatus } from "../../../shared/enums/payroll-status.enum";
 
 export class UpdatePayrollDto {
     @IsString({ message: 'salaryPeriod must be string' })
