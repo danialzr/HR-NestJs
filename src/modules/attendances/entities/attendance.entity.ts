@@ -7,6 +7,10 @@ export class Attendance {
     @PrimaryGeneratedColumn()
     id: number;
 
+    //tarikh shamsi
+    @Column({ type: 'text', nullable: false})
+    jDate: string;
+
     @Column({ type: 'timestamp', nullable: true})
     checkInTime: Date | null;
 

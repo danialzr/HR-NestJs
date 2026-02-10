@@ -15,25 +15,25 @@ export class DepartmentsManagerController {
         private readonly departmentsService: DepartmentsManagerService
     ) {}
 
-    // @POST /admin/departments
+    // @POST /manager/departments
     @Post()
     async create(@Body() dto: CreateDepartmentDto): Promise<Department> {
         return await this.departmentsService.create(dto);
     }
 
-    // GET /admin/departments/
+    // GET /manager/departments/
     @Get()
     async findAll(): Promise<Department[]> {
         return await this.departmentsService.findAll();
     }
 
-    // GET /admin/departments/:id
+    // GET /manager/departments/:id
     @Get(':id')
     async findOne(@Param('id', ParseIntPipe) id: number): Promise<Department> {
         return await this.departmentsService.findOne(id);
     }
 
-    //PATCH /admin/departments/:id
+    //PATCH /manager/departments/:id
     @Patch(':id')
     async update(
         @Param('id', ParseIntPipe) id: number,
@@ -42,7 +42,7 @@ export class DepartmentsManagerController {
         return await this.departmentsService.update(id, dto)
     }
 
-    //DELETE /admin/departments/:id
+    //DELETE /manager/departments/:id
     @Delete(':id')
     async remove(@Param('id', ParseIntPipe) id: number): Promise<{ success: boolean }> {
         await this.departmentsService.remove(id)

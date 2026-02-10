@@ -10,4 +10,8 @@ export class CheckInOutDto {
     @IsString({ message: 'note must be string'})
     @IsOptional()
     notes?: string;
+
+    @IsString({message: 'tarix must be string'})
+    @IsOptional()
+    jDate: string;
 }
