@@ -4,6 +4,8 @@ import { Attendance } from "./entities/attendance.entity";
 import { User } from "../users/entities/user.entity";
 import { AttendanceEmployeeService } from "./services/attendance-employee.service";
 import { AttendanceEmployeeController } from "./controllers/attendance-employee.controller";
+import { AttendanceManagerController } from "./controllers/attendance-manager.controller";
+import { AttendanceManagerService } from "./services/attendance-manager.service";
 
 
 @Module({
@@ -11,10 +13,12 @@ import { AttendanceEmployeeController } from "./controllers/attendance-employee.
         TypeOrmModule.forFeature([Attendance, User]),
     ],
     controllers: [
-        AttendanceEmployeeController
+        AttendanceEmployeeController,
+        AttendanceManagerController
     ],
     providers: [
-        AttendanceEmployeeService
+        AttendanceEmployeeService,
+        AttendanceManagerService
     ]
 })
 

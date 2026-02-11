@@ -1,15 +1,13 @@
 import { Body, Controller, Get, Post, Query } from "@nestjs/common";
-import { ApiBearerAuth } from "@nestjs/swagger";
-import { Roles } from "../../../modules/auth/decorators/roles.decorator";
-import { Role } from "../../../shared/enums/user-role.enum";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 import { AttendanceEmployeeService } from "../services/attendance-employee.service";
 import { CheckInOutDto } from "../dto/check-in-out.dto";
 import { GetUser } from "../../../common/decorators/getUser.decorator";
 import { FilterAttendanceDto } from "../dto/filter-attendance.dto";
 import { Attendance } from "../entities/attendance.entity";
 
+@ApiTags('Attendances')
 @ApiBearerAuth()
-@Roles(Role.EMPLOYEE)
 @Controller('employee/attendance')
 export class AttendanceEmployeeController {
     constructor(

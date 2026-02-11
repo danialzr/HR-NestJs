@@ -8,13 +8,13 @@ export class Attendance {
     id: number;
 
     //tarikh shamsi
-    @Column({ type: 'varchar', length: 10, nullable: false})
+    @Column({ type: 'varchar', length: 10, nullable: false })
     jDate: string;
 
-    @Column({ type: 'timestamp', nullable: true})
+    @Column({ type: 'timestamp', nullable: true })
     checkInTime: Date | null;
 
-    @Column({ type: 'timestamp', nullable: true})
+    @Column({ type: 'timestamp', nullable: true })
     checkOutTime: Date | null;
 
     @Column({ type: 'varchar', length: 250, nullable: true })
@@ -26,7 +26,10 @@ export class Attendance {
     @UpdateDateColumn()
     updatedAt: Date;
 
-    @ManyToOne(() => User, { eager: true})
+    @ManyToOne(() => User, {
+        eager: true,
+        onDelete: 'CASCADE'
+    })
     user: User;
 
 }

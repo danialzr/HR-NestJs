@@ -24,7 +24,7 @@ export class AttendanceEmployeeService {
             }
         });
 
-        if (openedAttendance.length) throw new BadRequestException('You habe open attendance')
+        if (openedAttendance.length) throw new BadRequestException('You have open attendance')
 
         const attendance = this.attendanceRepo.create({
             user: { id: userId } as any,
@@ -61,7 +61,7 @@ export class AttendanceEmployeeService {
     async findMyattendance(userId: number, filters: FilterAttendanceDto) {
         const queryBuilder = this.attendanceRepo
             .createQueryBuilder('attendances')
-            .where('attendance.userId = userId', { userId });
+            .where('attendances.userId = userId', { userId });
 
         if (filters.startTime) {
             queryBuilder.andWhere('attendances.jDate >= :startTime', {
@@ -76,7 +76,7 @@ export class AttendanceEmployeeService {
         }
 
         return await queryBuilder
-            .orderBy('attendaces.checkInTime', 'DESC')
+            .orderBy('attendances.checkInTime', 'DESC')
             .getMany();
     }
 }

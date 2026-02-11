@@ -1,7 +1,6 @@
 import { ApiPropertyOptional } from "@nestjs/swagger";
 import { IsOptional, IsString } from "class-validator";
 
-
 export class CheckInOutDto {
     @ApiPropertyOptional({
         description: 'optional notes for in or out',
