@@ -10,6 +10,7 @@ import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
 import { RolesGuard } from './modules/auth/guards/roles.guard';
 import { AttendanceModule } from './modules/attendances/attendance.module';
 import { PayrollModule } from './modules/payroll/payroll.module';
+import { UsersModule } from './modules/users/users.module';
 
 @Module({
   imports: [
@@ -39,7 +40,8 @@ import { PayrollModule } from './modules/payroll/payroll.module';
     AuthModule,
     DepartmentsModule,
     AttendanceModule,
-    PayrollModule
+    PayrollModule,
+    UsersModule
   ],
   controllers: [AppController],
   providers: [AppService,

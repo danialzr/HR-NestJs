@@ -4,7 +4,7 @@ import { Roles } from "../../../modules/auth/decorators/roles.decorator";
 import { Role } from "../../../shared/enums/user-role.enum";
 import { AttendanceEmployeeService } from "../services/attendance-employee.service";
 import { CheckInOutDto } from "../dto/check-in-out.dto";
-import { User } from "../../../common/decorators/user.decorator";
+import { GetUser } from "../../../common/decorators/getUser.decorator";
 import { FilterAttendanceDto } from "../dto/filter-attendance.dto";
 import { Attendance } from "../entities/attendance.entity";
 
@@ -19,14 +19,14 @@ export class AttendanceEmployeeController {
     @Post('check_in')
     async checkIn(
         @Body() dto: CheckInOutDto,
-        @User() user: { id: number, role: string }): Promise<Attendance> {
+        @GetUser() user: { id: number, role: string }): Promise<Attendance> {
         return await this.attendanceEmployeeService.checkIn(user.id, dto.jDate, dto.notes)
     }
 
     @Post('check_out')
     async checkOut(
         @Body() dto: CheckInOutDto,
-        @User() user: { id: number, role: string }
+        @GetUser() user: { id: number, role: string }
     ): Promise<Attendance> {
         return await this.attendanceEmployeeService.checkOut(user.id, dto.jDate, dto.notes)
     }
@@ -34,7 +34,7 @@ export class AttendanceEmployeeController {
     @Get()
     async findMyAttendance(
         @Query() filters: FilterAttendanceDto,
-        @User() user: { id: number }
+        @GetUser() user: { id: number }
     ): Promise<Attendance[]>{
         return await this.attendanceEmployeeService.findMyattendance(user.id, filters)
     }

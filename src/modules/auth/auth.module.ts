@@ -1,16 +1,16 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { User } from "./entities/user.entity";
 import { RefreshToken } from "./entities/refresh-token.entity";
 import { JwtModule } from "@nestjs/jwt";
 import { AuthService } from "./auth.service";
 import { JwtStrategy } from "./strategies/jwt.strategy";
 import { AuthController } from "./auth.controller";
-
+import { UsersModule } from "../users/users.module";
 
 @Module({
     imports: [
-        TypeOrmModule.forFeature([User, RefreshToken]),
+        TypeOrmModule.forFeature([RefreshToken]),
+        UsersModule,
         JwtModule.register({})
     ],
     providers: [AuthService, JwtStrategy],
@@ -18,4 +18,4 @@ import { AuthController } from "./auth.controller";
     exports: [AuthService]
 })
 
-export class AuthModule {}
+export class AuthModule { }
