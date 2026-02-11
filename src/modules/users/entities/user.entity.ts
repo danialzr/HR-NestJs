@@ -29,9 +29,6 @@ export class User {
     @Column({ nullable: true })
     insuranceNumber: string;
 
-    @Column({ default: true })
-    isActive: boolean;
-
     @Column({ nullable: true })
     managerId: number;
 

@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, Matches, MinLength } from "class-validator";
+import { IsNotEmpty, IsString, Length, Matches } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 
 export class RegisterDto {
@@ -11,6 +11,6 @@ export class RegisterDto {
     @ApiProperty({ description: 'password', example: '12345678', minLength: 6 })
     @IsString()
     @IsNotEmpty()
-    @MinLength(6)
+    @Length(6, 8, { message: 'رمز عبور باید بین ۶ تا ۲۰ کاراکتر باشد' })
     password: string;
 }

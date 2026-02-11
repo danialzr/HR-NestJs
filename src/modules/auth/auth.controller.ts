@@ -1,9 +1,7 @@
-import { Body, Controller, Post, Req, UnauthorizedException, UseGuards } from "@nestjs/common";
+import { Body, Controller, Post, Req, UnauthorizedException } from "@nestjs/common";
 import { AuthService } from "./auth.service";
 import { RegisterDto } from "./dto/register.dto";
 import { LoginDto } from "./dto/login.dto";
-import { JwtAuthGuard } from "./guards/jwt-auth.guard";
-import { GetUser } from "../../common/decorators/getUser.decorator";
 import { RefreshTokenDto } from "./dto/refresh-token.dto";
 import { Public } from "./decorators/public.decorator";
 
