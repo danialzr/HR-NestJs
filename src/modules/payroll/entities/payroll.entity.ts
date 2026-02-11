@@ -1,4 +1,4 @@
-import { User } from "../../../modules/auth/entities/user.entity";
+import { User } from "../../users/entities/user.entity";
 import { PayrollStatus } from "../../../shared/enums/payroll-status.enum";
 import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
@@ -35,6 +35,9 @@ export class Payroll {
     @UpdateDateColumn()
     updatedAt: Date;
 
-    @ManyToOne(() => User, { eager: true })
+    @ManyToOne(() => User, { 
+        eager: true,
+        onDelete: 'CASCADE'    
+    })
     user: User
 }

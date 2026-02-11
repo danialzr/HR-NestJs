@@ -24,14 +24,15 @@ import { UsersModule } from './modules/users/users.module';
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
-        type: 'mysql',
+        type: 'postgres',
         host: configService.get('DB_HOST', 'localhost'),
-        port: configService.get('DB_PORT', 3306),
-        username: configService.get('DB_USER', 'root'),
+        port: configService.get('DB_PORT', 5432),
+        username: configService.get('DB_USER', 'postgres'),
         password: configService.get('DB_PASS', ''),
         database: configService.get('DB_NAME', 'hr_db'),
         entities: [__dirname + '/**/entities/*.entity{.ts,.js}'],
         synchronize: configService.get('DB_SYNCHRONIZE', 'true') == 'true',
+        logging: false
       }),
       inject: [ConfigService]
     }),

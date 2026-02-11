@@ -45,38 +45,7 @@ async function bootstrap() {
     deepScanRoutes: true
   });
 
-  if (managerDocument.paths) {
-    Object.keys(managerDocument.paths).forEach((path) => {
-      if (!path.includes('/manager') && !path.includes('/auth')) {
-        delete managerDocument.paths[path];
-      }
-    })
-  }
-
   SwaggerModule.setup('api/v1/manager/docs', app, managerDocument)
-
-  //employee swagger
-  const employeeConfig = new DocumentBuilder()
-    .setTitle('Hr API - employee routes')
-    .setDescription('this route panel for employee')
-    .setVersion('1.0')
-    .addBearerAuth()
-    .build();
-  
-  const employeeDocument = SwaggerModule.createDocument(app, employeeConfig, {
-    include: [AppModule],
-    deepScanRoutes: true
-  });
-
-  if (employeeDocument.paths) {
-    Object.keys(employeeDocument.paths).forEach((path) => {
-      if (!path.includes('/employee') && !path.includes('/auth')) {
-        delete employeeDocument.paths[path];
-      }
-    })
-  }
-
-  SwaggerModule.setup('api/v1/employee/docs', app, employeeDocument)
 
   await app.listen(port);
   console.log(`🔫 Application "${appName}" is running on: ${port}`)

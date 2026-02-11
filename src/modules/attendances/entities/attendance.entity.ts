@@ -1,4 +1,4 @@
-import { User } from "../../../modules/auth/entities/user.entity";
+import { User } from "../../users/entities/user.entity";
 import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 

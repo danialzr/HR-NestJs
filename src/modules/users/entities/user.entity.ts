@@ -1,6 +1,7 @@
 import { Role } from "../../../shared/enums/user-role.enum";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { RefreshToken } from "../../auth/entities/refresh-token.entity";
+import { Payroll } from "src/modules/payroll/entities/payroll.entity";
 
 
 @Entity('users')
@@ -51,4 +52,7 @@ export class User {
 
     @OneToMany(() => RefreshToken, rt => rt.user)
     refreshTokens: RefreshToken[];
+
+    @OneToMany(() => Payroll, (payroll) => payroll.user)
+    payrolls: Payroll[];
 }
