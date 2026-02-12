@@ -15,16 +15,16 @@ export class Leave {
     endDate: string;
 
     @Column({ type: 'int', nullable: true })
-    startTime: number;
+    startTime?: number | null;
 
     @Column({ type: 'int', nullable: true })
-    endTime: number;
+    endTime?: number | null;
 
     @Column({ type: 'int', default: 0 })
-    totalminute: number;
+    totalMinute: number;
 
     @Column({ type: 'varchar', length: 255, nullable: true, })
-    reason: string;
+    reason?: string;
 
     @Column({ type: 'enum', enum: LeaveStatus, default: LeaveStatus.PENDING })
     status: LeaveStatus;

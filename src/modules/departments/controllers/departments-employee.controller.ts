@@ -1,9 +1,9 @@
 import { Controller, Get, Param, ParseIntPipe } from "@nestjs/common";
 import { DepartmentsEmployeeService } from "../services/departments-employee.service";
 import { Department } from "../entities/department.entity";
-import { ApiBearerAuth } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
-
+@ApiTags('employee - department')
 @ApiBearerAuth()
 @Controller('employee/departments')
 export class DepartmentsEmployeeController {
