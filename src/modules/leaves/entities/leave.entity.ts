@@ -1,0 +1,43 @@
+import { User } from "src/modules/users/entities/user.entity";
+import { LeaveStatus } from "src/shared/enums/leave-status.enum";
+import { LeaveType } from "src/shared/enums/leave-type.enum";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+
+@Entity('leaves')
+export class Leave {
+    @PrimaryGeneratedColumn()
+    id: number;
+
+    @Column({ type: 'varchar', length: 10 })
+    startDate: string;
+
+    @Column({ type: 'varchar', length: 10 })
+    endDate: string;
+
+    @Column({ type: 'int', nullable: true })
+    startTime: number;
+
+    @Column({ type: 'int', nullable: true })
+    endTime: number;
+
+    @Column({ type: 'int', default: 0 })
+    totalminute: number;
+
+    @Column({ type: 'varchar', length: 255, nullable: true, })
+    reason: string;
+
+    @Column({ type: 'enum', enum: LeaveStatus, default: LeaveStatus.PENDING })
+    status: LeaveStatus;
+
+    @Column({ type: 'enum', enum: LeaveType, default: LeaveType.HOURLY })
+    type: LeaveType;
+
+    @ManyToOne(() => User, { nullable: true, onDelete: 'CASCADE' })
+    approvedBy: User;
+
+    @ManyToOne(() => User, (user) => user.leaves, {
+        eager: true,
+        onDelete: 'CASCADE'
+    })
+    user: User;
+}

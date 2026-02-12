@@ -2,6 +2,7 @@ import { Role } from "../../../shared/enums/user-role.enum";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { RefreshToken } from "../../auth/entities/refresh-token.entity";
 import { Payroll } from "src/modules/payroll/entities/payroll.entity";
+import { Leave } from "src/modules/leaves/entities/leave.entity";
 
 
 @Entity('users')
@@ -40,10 +41,6 @@ export class User {
     @OneToMany(() => User, (user) => user.manager)
     subordinates: User[];
 
-    // --- روابط با ماژول‌های دیگر (بعداً اضافه می‌شوند) ---
-    // @OneToMany(() => LeaveRequest, lr => lr.employee)
-    // leaveRequests: LeaveRequest[];
-
     @CreateDateColumn()
     createdAt: Date;
 
@@ -55,4 +52,7 @@ export class User {
 
     @OneToMany(() => Payroll, (payroll) => payroll.user)
     payrolls: Payroll[];
+
+    @OneToMany(() => Leave, (leave) => leave.user)
+    leaves: Leave[];
 }
