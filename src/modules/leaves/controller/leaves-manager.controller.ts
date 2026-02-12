@@ -19,7 +19,7 @@ export class LeavesManagerController {
     async createByManager(
         @GetUser('id') managerId: number,
         @Param('id', ParseIntPipe) employeeId: number,
-        dto: CreateLeaveDto
+        @Body() dto: CreateLeaveDto
     ) {
         return await this.leavesService.createByManager(managerId, employeeId, dto);
     }

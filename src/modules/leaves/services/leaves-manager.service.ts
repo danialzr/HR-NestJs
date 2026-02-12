@@ -47,7 +47,7 @@ export class LeavesManagerService {
         const query = this.leaveRepo.createQueryBuilder('leaves')
             .leftJoinAndSelect('leaves.user', 'employee')
             .leftJoinAndSelect('leaves.approvedBy', 'approver')
-            .orderBy('leave.id', 'DESC');
+            .orderBy('leaves.id', 'DESC');
 
         if (user.role === Role.MANAGER) {
             query.where('user.managerId = :managerId', { managerId: user.id });
@@ -67,7 +67,7 @@ export class LeavesManagerService {
     }
 
     async decide(id: number, managerId: number, dto: ApproveLeaveDto) {
-        const leave = await this.leaveRepo.findOne({ where: { id } });
+        const leave = await this.leaveRepo.findOne({ where: { user: { id } } });
 
         if (!leave) throw new NotFoundException('درخواست مرخصی پیدا نشد');
 

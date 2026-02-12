@@ -89,7 +89,7 @@ export class LeaveEmployeeService {
       throw new BadRequestException('مرخصی تایید یا رد شده قابل ویرایش نیست');
     }
 
-    const { startTime, endTime, ...restDto } = dto;
+    const { startTime, endTime } = dto;
 
     if (dto.startDate || dto.endDate) {
       const exists = await this.leaveRepo.findOne({
