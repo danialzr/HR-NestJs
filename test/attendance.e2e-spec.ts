@@ -76,7 +76,7 @@ describe('Attendance (e2e)', () => {
         describe('POST /employee/attendace/check-in', () => {
             it('باید ورود را با موفقیت ثبت کند', () => {
                 return request(app.getHttpServer())
-                    .post('/employee/attendace/check-in')
+                    .post('/employee/attendance/check-in')
                     .set('Authorization', `Bearer ${employeeToken}`)
                     .send({
                         notes: 'ورود تست',
@@ -87,7 +87,7 @@ describe('Attendance (e2e)', () => {
 
             it('باید ورود را با موفقیت ثبت کند', () => {
                 return request(app.getHttpServer())
-                    .post('/employee/attendace/check-in')
+                    .post('/employee/attendance/check-in')
                     .set('Authorization', `Bearer ${employeeToken}`)
                     .send({
                         notes: 'ورود تست',
@@ -98,7 +98,7 @@ describe('Attendance (e2e)', () => {
 
             it('دو ورود تکراری نباید در یک روز ثبت شود', () => {
                 return request(app.getHttpServer())
-                    .post('/employee/attendace/check-in')
+                    .post('/employee/attendance/check-in')
                     .set('Authorization', `Bearer ${employeeToken}`)
                     .send({
                         notes: 'ورود تست',
@@ -109,7 +109,7 @@ describe('Attendance (e2e)', () => {
 
             it('رکورد بدون تاریخ نباید ثبت بشه', () => {
                 return request(app.getHttpServer())
-                    .post('/employee/attendace/check-in')
+                    .post('/employee/attendance/check-in')
                     .set('Authorization', `Bearer ${employeeToken}`)
                     .send({
                         notes: 'ورود تست'
@@ -119,7 +119,7 @@ describe('Attendance (e2e)', () => {
 
             it('باید خروج را با موفقیت ثبت کند', () => {
                 return request(app.getHttpServer())
-                    .post('/employee/attendace/check-out')
+                    .post('/employee/attendance/check-out')
                     .set('Authorization', `Bearer ${employeeToken}`)
                     .send({
                         jDate: '1404/01/01'
