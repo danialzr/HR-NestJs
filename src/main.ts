@@ -30,9 +30,7 @@ async function bootstrap() {
   //enable response transformation
   app.useGlobalInterceptors(new TransformResponseInterceptor)
 
-  //Add Swagger
-
-  //manager swagger
+  //swagger
   const managerConfig = new DocumentBuilder()
     .setTitle('Hr API - manager routes')
     .setDescription('this route panel for manager')
