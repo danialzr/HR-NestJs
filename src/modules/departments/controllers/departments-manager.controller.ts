@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from "@nestjs/common";
-import { DepartmentsManagerService } from "../services/departments.manager.service";
+import { DepartmentsManagerService } from "../services/departments-manager.service";
 import { CreateDepartmentDto } from "../dto/create-department.dto";
 import { Department } from "../entities/department.entity";
 import { UpdateDepartmentDto } from "../dto/update-department.dto";

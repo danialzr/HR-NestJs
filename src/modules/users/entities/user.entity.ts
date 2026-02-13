@@ -4,6 +4,7 @@ import { RefreshToken } from "../../auth/entities/refresh-token.entity";
 import { Payroll } from "src/modules/payroll/entities/payroll.entity";
 import { Leave } from "src/modules/leaves/entities/leave.entity";
 import { Department } from "src/modules/departments/entities/department.entity";
+import { Task } from "src/modules/tasks/entities/task.entity";
 
 
 @Entity('users')
@@ -59,4 +60,10 @@ export class User {
 
     @ManyToOne(() => Department, (dept) => dept.users, { onDelete: 'SET NULL' })
     department: Department;
+
+    @OneToMany(() => Task, (task) => task.assignee)
+    assignedTasks: Task[];
+
+    @OneToMany(() => Task, (task) => task.creator)
+    createdTasks: Task[]
 }
