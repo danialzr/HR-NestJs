@@ -60,7 +60,7 @@ export class PayrollManagerService {
         if (dto.baseSalary) payroll.baseSalary = dto.baseSalary;
         if (dto.bonuses) payroll.bonuses = dto.bonuses;
         if (dto.deduction) payroll.deduction = dto.deduction;
-        if (dto.status) {
+        if (dto.status) {   
             payroll.status = dto.status;
             if (dto.status == PayrollStatus.PAID && !payroll.paymentDate) {
                 payroll.paymentDate = new Date();
@@ -73,11 +73,13 @@ export class PayrollManagerService {
     }
 
     async findAll(filters: FilterPayrollDto) {
+
         const queryBuilder = this.payrollRepo
             .createQueryBuilder('payrolls')
             .leftJoinAndSelect('payrolls.user', 'users');
 
         if (filters.userId) {
+            filters.userId = Number(filters.userId);
             queryBuilder.andWhere('payrolls.userId = :userId', { userId: filters.userId })
         }
 

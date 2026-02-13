@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Query } from "@nestjs/common";
-import { ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
 import { Roles } from "../../../modules/auth/decorators/roles.decorator";
 import { Role } from "../../../shared/enums/user-role.enum";
 import { PayrollManagerService } from "../services/payroll-manager.service";
@@ -8,9 +8,9 @@ import { Payroll } from "../entities/payroll.entity";
 import { FilterPayrollDto } from "../dto/filter-payroll.dto";
 import { UpdatePayrollDto } from "../dto/update-payroll.dto";
 
-
+@ApiTags('Manager - Payroll')
 @ApiBearerAuth()
-@Roles(Role.MANAGER)
+@Roles(Role.MANAGER, Role.SUPER_ADMIN)
 @Controller('manager/payroll')
 export class PayrollManagerController {
     constructor(
