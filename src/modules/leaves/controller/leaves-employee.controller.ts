@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from "@nestjs/common";
 import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
 import { LeaveEmployeeService } from "../services/leaves-employee.service";
-import { GetUser } from "src/common/decorators/getUser.decorator";
+import { GetUser } from "../../../common/decorators/getUser.decorator";
 import { CreateLeaveDto } from "../dto/create-leave.dto";
 import { UpdateLeaveDto } from "../dto/update-leave.dto";
 

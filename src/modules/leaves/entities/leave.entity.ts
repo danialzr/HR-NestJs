@@ -1,6 +1,6 @@
-import { User } from "src/modules/users/entities/user.entity";
-import { LeaveStatus } from "src/shared/enums/leave-status.enum";
-import { LeaveType } from "src/shared/enums/leave-type.enum";
+import { User } from "../../../modules/users/entities/user.entity";
+import { LeaveStatus } from "../../../shared/enums/leave-status.enum";
+import { LeaveType } from "../../../shared/enums/leave-type.enum";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('leaves')

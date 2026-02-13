@@ -1,6 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 import { IsEnum, IsNotEmpty, IsOptional, IsString, Matches } from "class-validator";
-import { LeaveType } from "src/shared/enums/leave-type.enum";
+import { LeaveType } from "../../../shared/enums/leave-type.enum";
 
 export class CreateLeaveDto {
     @ApiProperty({

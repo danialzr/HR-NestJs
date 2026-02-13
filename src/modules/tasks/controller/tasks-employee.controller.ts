@@ -1,8 +1,7 @@
 import { Body, Controller, Get, Param, ParseIntPipe, Patch } from "@nestjs/common";
 import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
 import { TasksEmployeeService } from "../services/tasks-employee.service";
-import { GetUser } from "src/common/decorators/getUser.decorator";
-import { TaskStatus } from "src/shared/enums/task-status.enum";
+import { GetUser } from "../../../common/decorators/getUser.decorator";
 import { UpdateTaskStatusDto } from "../dto/update-taskstatus.dto";
 
 @ApiTags('Employee - Tasks')

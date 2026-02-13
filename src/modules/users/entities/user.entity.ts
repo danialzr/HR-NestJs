@@ -1,10 +1,10 @@
 import { Role } from "../../../shared/enums/user-role.enum";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { RefreshToken } from "../../auth/entities/refresh-token.entity";
-import { Payroll } from "src/modules/payroll/entities/payroll.entity";
-import { Leave } from "src/modules/leaves/entities/leave.entity";
-import { Department } from "src/modules/departments/entities/department.entity";
-import { Task } from "src/modules/tasks/entities/task.entity";
+import { Payroll } from "../../../modules/payroll/entities/payroll.entity";
+import { Leave } from "../../../modules/leaves/entities/leave.entity";
+import { Department } from "../../../modules/departments/entities/department.entity";
+import { Task } from "../../../modules/tasks/entities/task.entity";
 
 
 @Entity('users')

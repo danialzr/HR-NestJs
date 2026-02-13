@@ -2,9 +2,9 @@ import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Task } from "../entities/task.entity";
 import { Repository } from "typeorm";
-import { User } from "src/modules/users/entities/user.entity";
+import { User } from "../../../modules/users/entities/user.entity";
 import { CreateTaskDto } from "../dto/create-task.dto";
-import { TaskStatus } from "src/shared/enums/task-status.enum";
+import { TaskStatus } from "../../../shared/enums/task-status.enum";
 import { UpdateTaskDto } from "../dto/update-task.dto";
 
 @Injectable()

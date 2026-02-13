@@ -1,6 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 import { IsDateString, IsEnum, IsInt, IsNotEmpty, IsOptional, IsString, MaxLength } from "class-validator";
-import { TaskPriority } from "src/shared/enums/task-priority.enum";
+import { TaskPriority } from "../../../shared/enums/task-priority.enum";
 
 export class CreateTaskDto {
     @ApiProperty({

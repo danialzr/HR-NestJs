@@ -1,9 +1,9 @@
 import { Body, Controller, Get, Param, ParseIntPipe, Patch, Post } from "@nestjs/common";
 import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
-import { Roles } from "src/modules/auth/decorators/roles.decorator";
-import { Role } from "src/shared/enums/user-role.enum";
+import { Roles } from "../../../modules/auth/decorators/roles.decorator";
+import { Role } from "../../../shared/enums/user-role.enum";
 import { LeavesManagerService } from "../services/leaves-manager.service";
-import { GetUser } from "src/common/decorators/getUser.decorator";
+import { GetUser } from "../../../common/decorators/getUser.decorator";
 import { ApproveLeaveDto } from "../dto/approve-leave.dto";
 import { CreateLeaveDto } from "../dto/create-leave.dto";
 

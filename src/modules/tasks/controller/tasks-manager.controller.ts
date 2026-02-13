@@ -1,11 +1,11 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Query } from "@nestjs/common";
 import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
-import { Roles } from "src/modules/auth/decorators/roles.decorator";
-import { Role } from "src/shared/enums/user-role.enum";
+import { Roles } from "../../../modules/auth/decorators/roles.decorator";
+import { Role } from "../../../shared/enums/user-role.enum";
 import { TasksManagerService } from "../services/task-manager.service";
-import { GetUser } from "src/common/decorators/getUser.decorator";
+import { GetUser } from "../../../common/decorators/getUser.decorator";
 import { CreateTaskDto } from "../dto/create-task.dto";
-import { TaskStatus } from "src/shared/enums/task-status.enum";
+import { TaskStatus } from "../../../shared/enums/task-status.enum";
 import { UpdateTaskDto } from "../dto/update-task.dto";
 
 @ApiTags('Manager - Tasks')

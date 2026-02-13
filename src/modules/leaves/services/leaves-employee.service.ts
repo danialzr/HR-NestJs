@@ -3,8 +3,8 @@ import { CreateLeaveDto } from '../dto/create-leave.dto';
 import { UpdateLeaveDto } from '../dto/update-leave.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Leave } from '../entities/leave.entity';
-import { IsNull, Not, Repository } from 'typeorm';
-import { LeaveStatus } from 'src/shared/enums/leave-status.enum';
+import { Not, Repository } from 'typeorm';
+import { LeaveStatus } from '../../../shared/enums/leave-status.enum';
 
 @Injectable()
 export class LeaveEmployeeService {

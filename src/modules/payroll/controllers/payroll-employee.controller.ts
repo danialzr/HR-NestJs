@@ -1,6 +1,6 @@
 import { Controller, Get, Param, ParseIntPipe } from "@nestjs/common";
 import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
-import { GetUser } from "src/common/decorators/getUser.decorator";
+import { GetUser } from "../../../common/decorators/getUser.decorator";
 import { PayrollEmployeeService } from "../services/payroll-employee.service";
 
 

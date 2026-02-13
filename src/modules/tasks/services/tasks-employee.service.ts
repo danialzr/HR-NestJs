@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Task } from "../entities/task.entity";
 import { Repository } from "typeorm";
-import { TaskStatus } from "src/shared/enums/task-status.enum";
+import { TaskStatus } from "../../../shared/enums/task-status.enum";
 
 @Injectable()
 export class TasksEmployeeService {

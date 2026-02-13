@@ -1,8 +1,8 @@
 import { Controller, Delete, Get, Param, ParseIntPipe, Query } from "@nestjs/common";
 import { AttendanceManagerService } from "../services/attendance-manager.service";
 import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
-import { Roles } from "src/modules/auth/decorators/roles.decorator";
-import { Role } from "src/shared/enums/user-role.enum";
+import { Roles } from "../../../modules/auth/decorators/roles.decorator";
+import { Role } from "../../../shared/enums/user-role.enum";
 import { FilterAttendanceDto } from "../dto/filter-attendance.dto";
 
 @ApiTags('Manager - Attendances')

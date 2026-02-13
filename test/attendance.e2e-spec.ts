@@ -4,7 +4,7 @@ import { AppModule } from "src/app.module";
 import { TransformResponseInterceptor } from "src/common/interceptors/transform-response.interceptor";
 import { DataSource } from "typeorm";
 import * as bcrypt from 'bcrypt'
-import { User } from "src/modules/auth/entities/user.entity";
+import { User } from "src/modules/users/entities/user.entity";
 import { Role } from "src/shared/enums/user-role.enum";
 
 

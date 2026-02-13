@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsEnum, IsNotEmpty } from "class-validator";
-import { LeaveStatus } from "src/shared/enums/leave-status.enum";
+import { LeaveStatus } from "../../../shared/enums/leave-status.enum";
 
 
 export class ApproveLeaveDto {

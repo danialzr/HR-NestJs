@@ -1,6 +1,6 @@
-import { User } from "src/modules/users/entities/user.entity";
-import { TaskPriority } from "src/shared/enums/task-priority.enum";
-import { TaskStatus } from "src/shared/enums/task-status.enum";
+import { User } from "../../../modules/users/entities/user.entity";
+import { TaskPriority } from "../../../shared/enums/task-priority.enum";
+import { TaskStatus } from "../../../shared/enums/task-status.enum";
 import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity('tasks')

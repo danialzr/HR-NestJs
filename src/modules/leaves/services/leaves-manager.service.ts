@@ -3,8 +3,8 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { Leave } from "../entities/leave.entity";
 import { Repository } from "typeorm";
 import { CreateLeaveDto } from "../dto/create-leave.dto";
-import { LeaveStatus } from "src/shared/enums/leave-status.enum";
-import { Role } from "src/shared/enums/user-role.enum";
+import { LeaveStatus } from "../../../shared/enums/leave-status.enum";
+import { Role } from "../../../shared/enums/user-role.enum";
 import { ApproveLeaveDto } from "../dto/approve-leave.dto";
 
 
