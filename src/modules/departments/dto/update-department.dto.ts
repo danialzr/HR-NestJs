@@ -1,4 +1,10 @@
-import { PartialType } from '@nestjs/mapped-types';
+import { ApiPropertyOptional, PartialType } from '@nestjs/swagger';
 import { CreateDepartmentDto } from './create-department.dto';
+import { IsBoolean, IsOptional } from 'class-validator';
 
-export class UpdateDepartmentDto extends PartialType(CreateDepartmentDto) {}
+export class UpdateDepartmentDto extends PartialType(CreateDepartmentDto) {
+    @ApiPropertyOptional({ example: true, description: 'وضعیت فعال بودن دپارتمان' })
+    @IsBoolean()
+    @IsOptional()
+    isActive?: boolean;
+}

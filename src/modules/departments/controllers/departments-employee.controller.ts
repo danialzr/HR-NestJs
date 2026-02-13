@@ -1,7 +1,7 @@
 import { Controller, Get, Param, ParseIntPipe } from "@nestjs/common";
 import { DepartmentsEmployeeService } from "../services/departments-employee.service";
 import { Department } from "../entities/department.entity";
-import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
 
 @ApiTags('employee - department')
 @ApiBearerAuth()
@@ -13,12 +13,14 @@ export class DepartmentsEmployeeController {
 
     // GET /employee/departments
     @Get()
+    @ApiOperation({ summary: 'دریافت لیست تمام دپارتمان‌ها' })
     async findAll(): Promise<Department[]> {
         return await this.departmentsService.findAll();
     }
 
     // GET /employee/departments/:id
     @Get(':id')
+    @ApiOperation({ summary: 'دریافت جزئیات یک دپارتمان' })
     async findone(@Param('id', ParseIntPipe) id: number): Promise<Department> {
         return await this.departmentsService.findOne(id)
     }

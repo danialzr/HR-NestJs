@@ -25,14 +25,12 @@ export class LeavesManagerController {
     }
 
     @Get()
-    @Roles(Role.MANAGER, Role.SUPER_ADMIN)
     @ApiOperation({ summary: 'مشاهده لیست مرخصی‌ها (بر اساس سطح دسترسی)' })
     async findAll(@GetUser() user: any) {
         return await this.leavesService.findAll(user);
     }
 
     @Patch(':id/decide')
-    @Roles(Role.MANAGER, Role.SUPER_ADMIN)
     @ApiOperation({ summary: 'تایید یا رد درخواست مرخصی کارمند' })
     async decide(
         @Param('id', ParseIntPipe) id: number,

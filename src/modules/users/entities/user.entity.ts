@@ -3,6 +3,7 @@ import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, Pri
 import { RefreshToken } from "../../auth/entities/refresh-token.entity";
 import { Payroll } from "src/modules/payroll/entities/payroll.entity";
 import { Leave } from "src/modules/leaves/entities/leave.entity";
+import { Department } from "src/modules/departments/entities/department.entity";
 
 
 @Entity('users')
@@ -55,4 +56,7 @@ export class User {
 
     @OneToMany(() => Leave, (leave) => leave.user)
     leaves: Leave[];
+
+    @ManyToOne(() => Department, (dept) => dept.users, { onDelete: 'SET NULL' })
+    department: Department;
 }
